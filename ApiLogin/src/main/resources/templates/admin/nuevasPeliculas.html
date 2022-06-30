@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="index :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:replace="index :: header" class="header"></header>
+
+<div class="container-general">
+
+	<div class="container-general">
+		<!-- Films -->
+		<div class="main movies-rows">
+			<h1 class="list-title">Películas</h1>
+		<table class="table table-hover">
+        <thead>
+	        <tr>
+	            <th></th>
+	            <th>Película</th>
+	            <th>Fec. estreno</th>
+	            <th></th>
+	        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pelicula : ${peliculas}" th:object="${pelicula}">
+            <td style="width: 150px;">
+                <a th:href="@{/assets/{filename}(filename=*{rutaPortada})}" data-fancybox>
+                    <img th:src="@{/assets/{filename}(filename=*{rutaPortada})}"
+                         alt=""
+                         class="img-thumbnail w-100">
+                </a>
+            </td>
+            <td>
+                <div th:text="*{titulo}" class="fs-5 fw-bold"></div>
+                <p th:text="*{sinopsis}"></p>
+                <div>
+                    <span class="badge rounded-pill bg-light text-dark me-1"
+                          th:each="genero : *{generos}"
+                          th:text="${genero.titulo}"></span>
+                </div>
+            </td>
+            <td th:text="*{#temporals.format(fechaEstreno, 'dd/MM/yyyy')}"></td>
+            <td class="text-end">
+                <a th:href="@{/admin/peliculas/{id}/editar(id=*{id})}">Editar</a>
+                <a href="javascript:void(0)" class="text-danger ms-3"
+                   th:onclick="'eliminarPelicula(' + *{id} + ')'">Eliminar</a>
+                <form th:id="'eliminarPeliculaForm' + *{id}"
+                      th:action="@{/admin/peliculas/{id}/eliminar(id=*{id})}"
+                      method="post"
+                      class="d-none"></form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+<!-- 			<div class="slider responsive"> -->
+<!-- 				<div class="card"> -->
+<!-- 					<h3> -->
+<!-- 						<img src="../img/portadas/recommed/img1.jpg"> -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 				<div class="card"> -->
+<!-- 					<h3> -->
+<!-- 						<img src="../img/portadas/recommed/img2.jpg"> -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 				<div class="card"> -->
+<!-- 					<h3> -->
+<!-- 						<img src="../img/portadas/recommed/img3.jpg"> -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 				<div class="card"> -->
+<!-- 					<h3> -->
+<!-- 						<img src="../img/portadas/recommed/img4.jpg"> -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 				<div class="card"> -->
+<!-- 					<h3> -->
+<!-- 						<img src="../img/portadas/recommed/img5.jpg"> -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 				<div class="card"> -->
+<!-- 					<h3> -->
+<!-- 						<img src="../img/portadas/recommed/img6.jpg"> -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+		</div>
+	</div>
+	</div>
+	
+<footer th:replace="index :: footer" class="footer"></footer>
+</body>
+<!-- Scripts Slider JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/scroll.js"></script>
+<script src="../js/slider.js"></script>
+</html>

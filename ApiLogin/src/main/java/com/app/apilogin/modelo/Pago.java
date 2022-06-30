@@ -20,7 +20,8 @@ public class Pago {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "pagos_id")
+	private Integer id;
 
 	@Column(name = "monto")
 	private Double monto;
@@ -30,18 +31,18 @@ public class Pago {
 	private Date fechaPago;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_medioPagos")
+	@JoinColumn(name = "medioPagos_id")
 	private MedioPago medioPago;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_planes")
+	@JoinColumn(name = "planes_id")
 	private Planes planes;
 
 	public Pago() {
 		super();
 	}
 
-	public Pago(Long id, Double monto, Date fechaPago, MedioPago medioPago, Planes planes) {
+	public Pago(Integer id, Double monto, Date fechaPago, MedioPago medioPago, Planes planes) {
 		super();
 		this.id = id;
 		this.monto = monto;
@@ -50,11 +51,11 @@ public class Pago {
 		this.planes = planes;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

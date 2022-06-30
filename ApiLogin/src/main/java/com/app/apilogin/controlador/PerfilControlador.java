@@ -66,7 +66,7 @@ public class PerfilControlador {
 	}
 
 	@GetMapping("/obtenerPerfilPorID")
-	public ResponseEntity<Perfiles> obtenerPerfilPorID(@RequestParam(value = "id",required = true) Long id) throws JsonProcessingException {
+	public ResponseEntity<Perfiles> obtenerPerfilPorID(@RequestParam(value = "id",required = true) Integer id) throws JsonProcessingException {
 		
 		Perfiles usuario = perfilesRepositorio.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el perfil"));
@@ -76,7 +76,7 @@ public class PerfilControlador {
 	}
 	
 	@PutMapping("/actualizarPerfilPorID")
-	public ResponseEntity<Perfiles> actualizarPerfilPorID(@RequestParam(value = "id",required = true) Long id,@RequestBody Perfiles perfilAct) throws JsonProcessingException {
+	public ResponseEntity<Perfiles> actualizarPerfilPorID(@RequestParam(value = "id",required = true) Integer id,@RequestBody Perfiles perfilAct) throws JsonProcessingException {
 		Perfiles perfilActualizado = new Perfiles();
 		
 		String obj = Constantes.printPrettyJSONString(perfilAct);
@@ -109,7 +109,7 @@ public class PerfilControlador {
 	}
 	//este metodo sirve para eliminar un empleado
 		@DeleteMapping("/eliminarPerfil/{id}")
-		public ResponseEntity<Map<String,Boolean>> eliminarPerfil(@PathVariable Long id){
+		public ResponseEntity<Map<String,Boolean>> eliminarPerfil(@PathVariable Integer id){
 			Perfiles empleado = perfilesRepositorio.findById(id)
 					            .orElseThrow(() -> new ResourceNotFoundException("No existe el perfil con el ID : " + id));
 			
@@ -119,18 +119,4 @@ public class PerfilControlador {
 			return ResponseEntity.ok(respuesta);
 	    }
 		
-
-	
-//	@GetMapping("/validarDatos")
-//	public ResponseEntity<?> validarDatos(@RequestParam(value = "email",required = true) String email, @RequestParam(value = "pass",required = true) String pass) throws JsonProcessingException {
-//		logger.info(Constantes.MENSAJE2,"[validarDatos][user] ", email);
-//		logger.info(Constantes.MENSAJE2,"[validarDatos][pass] ", pass);
-//		try {
-//                return ResponseEntity.status(HttpStatus.OK).body(usuarioRepositorio.validarDatos(email, pass));
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
-//        }
-//	}
-
-	
 }

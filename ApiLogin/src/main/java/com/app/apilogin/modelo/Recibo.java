@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 public class Recibo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "recibos_id")
+	private Integer id;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "fecha_recibo", updatable = false, nullable = false)
@@ -35,18 +36,18 @@ public class Recibo {
 	private String numeroDocumento;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_usuarios")
+	@JoinColumn(name = "usuarios_id")
 	private Usuario usuario;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_pagos")
+	@JoinColumn(name = "pagos_id")
 	private Pago pago;
 
 	public Recibo() {
 		super();
 	}
 
-	public Recibo(Long id, Date fechaRecibo, String direccion, String codigoRecibo, String numeroDocumento,
+	public Recibo(Integer id, Date fechaRecibo, String direccion, String codigoRecibo, String numeroDocumento,
 			Usuario usuario, Pago pago) {
 		super();
 		this.id = id;
@@ -58,11 +59,11 @@ public class Recibo {
 		this.pago = pago;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

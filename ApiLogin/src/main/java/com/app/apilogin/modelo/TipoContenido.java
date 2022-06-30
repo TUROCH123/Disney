@@ -13,7 +13,8 @@ public class TipoContenido {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "tiposContenidos_id")
+	private Integer id;
 
 	@Column(name = "tipo", nullable = false, length = 60)
 	private String tipo;
@@ -22,17 +23,17 @@ public class TipoContenido {
 		super();
 	}
 
-	public TipoContenido(Long id, String tipo) {
+	public TipoContenido(Integer id, String tipo) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

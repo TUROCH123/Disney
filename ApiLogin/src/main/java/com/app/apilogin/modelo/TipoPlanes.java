@@ -13,7 +13,8 @@ public class TipoPlanes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "tipoPlanes_id")
+	private Integer id;
 
 	@Column(name = "nombre", nullable = false, length = 120)
 	private String nombre;
@@ -28,7 +29,7 @@ public class TipoPlanes {
 		super();
 	}
 
-	public TipoPlanes(Long id, String nombre, Double precio, int tiempo) {
+	public TipoPlanes(Integer id, String nombre, Double precio, int tiempo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -44,11 +45,11 @@ public class TipoPlanes {
 		this.nombre = nombre;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

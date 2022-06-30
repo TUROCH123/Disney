@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public interface ApiLoginService {
 
 	public ResponseEntity<?> validarDatos(String email, String pass) throws JsonProcessingException;
-	public ResponseEntity<?> actualizarUsuarioPorID(Long id,Usuario usuarioAct) throws JsonProcessingException;
+	public ResponseEntity<?> actualizarUsuarioPorID(Integer id,Usuario usuarioAct) throws JsonProcessingException;
 	public ResponseEntity<?> guardarUsuario(Usuario usuario) throws JsonProcessingException;
-	public ResponseEntity<?> obtenerUsuarioPorID(@PathVariable Long id) throws JsonProcessingException;
+	public ResponseEntity<?> obtenerUsuarioPorID(@PathVariable Integer id) throws JsonProcessingException;
 }

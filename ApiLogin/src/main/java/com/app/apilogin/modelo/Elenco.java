@@ -6,27 +6,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "roles")
-public class Roles {
-
+@Table(name = "elencos")
+public class Elenco {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "roles_id")
+	@Column(name = "elencos_id")
 	private Integer id;
+	
+	@NotBlank
+	@Column(name = "nombre", nullable = false, length = 20)
+	private String nombre;
 
-	@Column(name = "rol", nullable = false)
-	private String rol;
-
-	public Roles() {
+	public Elenco() {
 		super();
 	}
 
-	public Roles(Integer id, String rol) {
+	public Elenco(Integer id, @NotBlank String nombre) {
 		super();
 		this.id = id;
-		this.rol = rol;
+		this.nombre = nombre;
 	}
 
 	public Integer getId() {
@@ -37,12 +39,12 @@ public class Roles {
 		this.id = id;
 	}
 
-	public String getRol() {
-		return rol;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-
+	
 }

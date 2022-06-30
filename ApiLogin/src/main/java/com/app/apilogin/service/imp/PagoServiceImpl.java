@@ -30,23 +30,29 @@ public class PagoServiceImpl implements PagoService {
 	private UsuarioWs usuarioWs;
 	
 	@Override
-	public ResponseEntity<?> realizarPago(Pago pago,Long id) throws JsonProcessingException {
+	public ResponseEntity<?> realizarPago(Pago pago,Integer id) throws JsonProcessingException {
 		Respuesta respuesta = new Respuesta();
 		boolean existeMedioPago = false;
 		boolean activo = false;
+		String msj ="[ACTIVIDAD][realizarPago]";
 		try {
+			logger.info(Constantes.MENSAJE2,msj, "[obtenerUsuarioPorId][INICIO]");
 			Usuario usuario = usuarioWs.obtenerUsuarioPorId(id);
 			String usr = Constantes.printPrettyJSONString(usuario);
-			logger.info(Constantes.MENSAJE2, "[realizarPago][usuario] ", usr);
-			if (usuario != null) {
-				existeMedioPago = existeMedioPago(existeMedioPago,usuario,pago,id);
-			}else {
+			logger.info(Constantes.MENSAJE3, msj,"[obtenerUsuarioPorId]", usr);
+			logger.info(Constantes.MENSAJE2,msj,"[obtenerUsuarioPorId][FIN]");
+			if (usr.contains("\"id\" : null")) {
 				throw new IDFException("1", "El usuario no existe");
+			}else {
+				existeMedioPago = existeMedioPago(existeMedioPago,usuario,pago,id,msj);
 			}
 			
 			activo = existePago(pago,existeMedioPago,activo);
 			
 			if (!activo) {
+				logger.info(Constantes.MENSAJE2,msj, "[obtenerPlanesPorId][INICIO]");
+//				pago.getPlanes().getTipoPlanes().getId()
+				logger.info(Constantes.MENSAJE2,msj, "[obtenerPlanesPorId][FIN]");
 				Pago newPago= pagoRepositorio.save(pago);
 				String usrs = Constantes.printPrettyJSONString(newPago);
 				logger.info(Constantes.MENSAJE2, "[realizarPago][new] ", usrs);
@@ -68,25 +74,30 @@ public class PagoServiceImpl implements PagoService {
 		}
 	}
 
-	private boolean existeMedioPago(boolean existeMedioPago, Usuario usuario, Pago pago, Long id) throws IDFException, WSException {
-		if (!usuario.getMedioPago().isEmpty()) {
-			for (MedioPago medioPago : usuario.getMedioPago()) {
-				if (medioPago.getId().equals(pago.getMedioPago().getId())) {
-					existeMedioPago = true;
-				}
-			}
-		}else {
-
+	private boolean existeMedioPago(boolean existeMedioPago, Usuario usuario, Pago pago, Integer id, String msj) throws IDFException, WSException {
+		logger.info(Constantes.MENSAJE2, msj,"[existeMedioPago][INICIO]");
+		if (usuario.getMedioPago().isEmpty()) {
 			if (pago.getMedioPago() == null) {
 				throw new IDFException("3", "Favor de Agregar un Medio de Pago al usuario");
 			}else {
+				logger.info(Constantes.MENSAJE3, msj,"[actualizarUsuarioPorID][INICIO]");
 				//agregar medio de pago al usuario consultado
-				usuario.getMedioPago().clear();
+//				usuario.getMedioPago().clear();
 				usuario.getMedioPago().add(pago.getMedioPago());
 				usuarioWs.actualizarUsuarioPorID(id, usuario);
+				logger.info(Constantes.MENSAJE3, msj,"[actualizarUsuarioPorID][FIN]");
 				existeMedioPago = true;
 			}
+		}else {
+			for (MedioPago medioPago : usuario.getMedioPago()) {
+				if (medioPago.getId().equals(pago.getMedioPago().getId())) {
+					logger.info(Constantes.MENSAJE3,  msj,"[existeMedioPago] "+pago.getMedioPago().getId());
+					existeMedioPago = true;
+				}
+			}
 		}
+		logger.info(Constantes.MENSAJE3,  msj, "[existeMedioPago] ",existeMedioPago);
+		logger.info(Constantes.MENSAJE2,  msj, "[existeMedioPago][FIN]");
 		return existeMedioPago;
 	}
 

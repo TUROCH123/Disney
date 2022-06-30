@@ -46,19 +46,19 @@ public class LoginControlador {
 	}
 
 	@GetMapping("/obtenerUsuarioPorID/{id}")
-	public ResponseEntity<?> obtenerUsuarioPorID(@PathVariable Long id) throws JsonProcessingException {
+	public ResponseEntity<?> obtenerUsuarioPorID(@PathVariable Integer id) throws JsonProcessingException {
 		return service.obtenerUsuarioPorID(id);
 	}
 	
 
 	@PutMapping("/actualizarUsuarioPorID")
-	public ResponseEntity<?> actualizarUsuarioPorID(@RequestParam(value = "id",required = false) Long id,@RequestBody Usuario usuarioAct) throws JsonProcessingException {
+	public ResponseEntity<?> actualizarUsuarioPorID(@RequestParam(value = "id",required = false) Integer id,@RequestBody Usuario usuarioAct) throws JsonProcessingException {
 		return service.actualizarUsuarioPorID(id, usuarioAct);
 	}
 	
 	//este metodo sirve para eliminar un empleado
 	@DeleteMapping("/eliminarUsuario/{id}")
-	public ResponseEntity<Map<String,Boolean>> eliminarUsuario(@PathVariable Long id){
+	public ResponseEntity<Map<String,Boolean>> eliminarUsuario(@PathVariable Integer id){
 		
 			Usuario usuario = usuarioRepositorio.findById(id)
 					            .orElseThrow(() -> new ResourceNotFoundException("No existe el usuario con el ID : " + id));

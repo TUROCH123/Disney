@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.app.apilogin.modelo.Perfiles;
 
 @Repository
-public interface PerfilesRepositorio extends JpaRepository<Perfiles, Long> {
+public interface PerfilesRepositorio extends JpaRepository<Perfiles, Integer> {
 
 }

@@ -1,8 +1,6 @@
 package com.app.apilogin.modelo;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,36 +21,37 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class Perfiles {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "perfiles_id")
+	private Integer id;
 
 	@Column(name = "alias", nullable = false, length = 60)
 	private String alias;
 
-	@Column(name = "avatar", nullable = false, length = 60)
+	@Column(name = "avatar", nullable = false, length = 200)
 	private String avatar;
 
 	@Column(name = "idioma", nullable = false, length = 60)
 	private String idioma;
 
-	@Column(name = "reproduccionAutomatica", nullable = false, length = 60)
+	@Column(name = "reproduccionAutomatica", nullable = false)
 	private boolean reproduccionAutomatica;
 
-	@Column(name = "ping", nullable = false, length = 60)
+	@Column(name = "ping", nullable = false, length = 4)
 	private int ping;
 
-	@Column(name = "controlParental", nullable = false, length = 60)
+	@Column(name = "controlParental", nullable = false)
 	private boolean controlParental;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "perfiles_miListas", joinColumns = @JoinColumn(name = "perfiles_id"), inverseJoinColumns = @JoinColumn(name = "miListas_id"))
-	private List<MiLista> miListas = new ArrayList<>();
+	private List<MiLista> miListas;
 
 	public Perfiles() {
 		super();
 	}
 
-	public Perfiles(Long id, String alias, String avatar, String idioma, boolean reproduccionAutomatica, int ping,
+	public Perfiles(Integer id, String alias, String avatar, String idioma, boolean reproduccionAutomatica, int ping,
 			boolean controlParental, List<MiLista> miListas) {
 		super();
 		this.id = id;
@@ -73,11 +72,11 @@ public class Perfiles {
 		this.miListas = miListas;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

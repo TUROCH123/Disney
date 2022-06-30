@@ -1,6 +1,5 @@
 package com.app.apilogin.modelo;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,12 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-//import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-//import org.hibernate.annotations.LazyCollection;
-//import org.hibernate.annotations.LazyCollectionOption;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -25,14 +21,16 @@ import javax.validation.constraints.NotEmpty;
 public class Contenido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "contenidos_id")
+	private Integer id;
 	
 	@NotBlank
 	@Column(name = "nombre", nullable = false, length = 120)
 	private String nombre;
 
-	@Column(name = "descripcion", nullable = false, length = 120)
-	private String descripcion;
+	@NotBlank
+	@Column(name = "descripcionGeneral", nullable = false, length = 120)
+	private String descripcionGeneral;
 
 	@Column(name = "imagen", nullable = false, length = 200)
 	private String imagen;
@@ -41,38 +39,70 @@ public class Contenido {
 	private String pgeneral;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_tipoContenidos")
+	@JoinColumn(name = "tipoContenidos_id")
 	private TipoContenido tipoContenidos;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_proveedores")
+	@JoinColumn(name = "proveedores_id")
 	private Proveedor proveedores;
 
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//	@LazyCollection(LazyCollectionOption.FALSE)
 	@NotEmpty
+//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@ManyToMany(fetch= FetchType.LAZY)
 //	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "contenidos_generos", joinColumns = @JoinColumn(name = "contenidos_id"), inverseJoinColumns = @JoinColumn(name = "generos_id"))
-	private List<Genero> generos = new ArrayList<>();
+	private List<Genero> generos;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "peliculas_id")
+	private Pelicula pelicula;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "series_id")
+	private Serie serie;
 	
 	public Contenido() {
 		super();
 	}
 
-	public Contenido(Long id, String nombre, String descripcion, String imagen, String pgeneral,
-			TipoContenido tipoContenidos, Proveedor proveedores, List<Genero> generos) {
+	public Contenido(Integer id, @NotBlank String nombre, String descripcionGeneral, String imagen, String pgeneral,
+			TipoContenido tipoContenidos, Proveedor proveedores, @NotEmpty List<Genero> generos, Pelicula pelicula,
+			Serie serie) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.descripcion = descripcion;
+		this.descripcionGeneral = descripcionGeneral;
 		this.imagen = imagen;
 		this.pgeneral = pgeneral;
 		this.tipoContenidos = tipoContenidos;
 		this.proveedores = proveedores;
 		this.generos = generos;
+		this.pelicula = pelicula;
+		this.serie = serie;
+	}
+
+	public Serie getSerie() {
+		return serie;
+	}
+
+	public void setSerie(Serie serie) {
+		this.serie = serie;
+	}
+
+	public String getDescripcionGeneral() {
+		return descripcionGeneral;
+	}
+
+	public void setDescripcionGeneral(String descripcionGeneral) {
+		this.descripcionGeneral = descripcionGeneral;
+	}
+
+	public Pelicula getPelicula() {
+		return pelicula;
+	}
+
+	public void setPelicula(Pelicula pelicula) {
+		this.pelicula = pelicula;
 	}
 
 	public String getPgeneral() {
@@ -123,19 +153,11 @@ public class Contenido {
 		this.nombre = nombre;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

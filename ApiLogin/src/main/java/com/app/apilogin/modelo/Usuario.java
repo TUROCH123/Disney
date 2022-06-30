@@ -1,9 +1,7 @@
 package com.app.apilogin.modelo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,10 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
 
 @Entity
@@ -27,7 +23,8 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "usuarios_id")
+	private Integer id;
 
 	@Column(name = "nombre", nullable = false, length = 60)
 	private String nombre;
@@ -54,28 +51,31 @@ public class Usuario {
 	private Date fechaVencimiento;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//	@OneToMany(fetch = FetchType.LAZY)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "usuarios_perfiles", joinColumns = @JoinColumn(name = "usuarios_id"), inverseJoinColumns = @JoinColumn(name = "perfiles_id"))
-	private List<Perfiles> perfiles = new ArrayList<>();
+	private List<Perfiles> perfiles;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_roles")
+//	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "roles_id")
 	private Roles roles;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_planes")
+//	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "planes_id")
 	private Planes planes;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "usuarios_medioPagos", joinColumns = @JoinColumn(name = "usuarios_id"), inverseJoinColumns = @JoinColumn(name = "medioPagos_id"))
-	private List<MedioPago> medioPago = new ArrayList<>();
+	private List<MedioPago> medioPago;
 
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(Long id, String nombre, String apellido, String email, String celular, String password,
+	public Usuario(Integer id, String nombre, String apellido, String email, String celular, String password,
 			Date fechaInscripcion, Date fechaVencimiento, List<Perfiles> perfiles, Roles roles, Planes planes,
 			List<MedioPago> medioPago) {
 		super();
@@ -109,11 +109,11 @@ public class Usuario {
 		this.planes = planes;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

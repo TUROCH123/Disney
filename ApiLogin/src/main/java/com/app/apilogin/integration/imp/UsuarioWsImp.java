@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.http.HttpEntity;
+
 import org.springframework.remoting.jaxws.JaxWsSoapFaultException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -24,7 +24,7 @@ public class UsuarioWsImp  implements UsuarioWs {
 	RestTemplate restTemplateUsuario;
 	  
 	@Override
-	public Usuario obtenerUsuarioPorId(Long id) throws WSException {
+	public Usuario obtenerUsuarioPorId(Integer id) throws WSException {
 		Usuario response = new Usuario();
 		String url = "http://localhost:8080/api/v1/login/obtenerUsuarioPorID/"+id;
 		String nombreComponente = "login";
@@ -51,7 +51,7 @@ public class UsuarioWsImp  implements UsuarioWs {
 		    }
 	}
 	@Override
-	public ResponseEntity<?> actualizarUsuarioPorID(Long id, Usuario usuario) throws WSException {
+	public ResponseEntity<?> actualizarUsuarioPorID(Integer id, Usuario usuario) throws WSException {
 		ResponseEntity<Usuario> response = null;
 		String url = "http://localhost:8080/api/v1/login/actualizarUsuarioPorID/";
 		String nombreComponente = "login";

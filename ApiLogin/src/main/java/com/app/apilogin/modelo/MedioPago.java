@@ -12,7 +12,8 @@ import javax.persistence.Table;
 public class MedioPago {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "medioPagos_id")
+	private Integer id;
 
 	@Column(name = "titulo", nullable = false, length = 120)
 	private String titulo;
@@ -20,7 +21,7 @@ public class MedioPago {
 	@Column(name = "numeroTarjeta", nullable = false, length = 120)
 	private String numeroTarjeta;
 
-	@Column(name = "ccv")
+	@Column(name = "ccv", unique = true)
 	private int ccv;
 
 	@Column(name = "fechaVencimiento", nullable = false, length = 40)
@@ -30,7 +31,7 @@ public class MedioPago {
 		super();
 	}
 
-	public MedioPago(Long id, String titulo, String numeroTarjeta, int ccv, String fechaVencimiento) {
+	public MedioPago(Integer id, String titulo, String numeroTarjeta, int ccv, String fechaVencimiento) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -39,11 +40,11 @@ public class MedioPago {
 		this.fechaVencimiento = fechaVencimiento;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

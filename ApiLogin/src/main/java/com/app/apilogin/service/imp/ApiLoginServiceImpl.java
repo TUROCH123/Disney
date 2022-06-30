@@ -60,7 +60,7 @@ public class ApiLoginServiceImpl implements ApiLoginService {
 	}
 
 	@Override
-	public ResponseEntity<?> actualizarUsuarioPorID(Long id, Usuario usuarioAct) throws JsonProcessingException {
+	public ResponseEntity<?> actualizarUsuarioPorID(Integer id, Usuario usuarioAct) throws JsonProcessingException {
 
 		String obj = Constantes.printPrettyJSONString(usuarioAct);
 		logger.info(Constantes.MENSAJE2, "[actualizarUsuarioPorID] ", obj);
@@ -136,7 +136,7 @@ public class ApiLoginServiceImpl implements ApiLoginService {
 	}
 
 	@Override
-	public ResponseEntity<?> obtenerUsuarioPorID(Long id) throws JsonProcessingException {
+	public ResponseEntity<?> obtenerUsuarioPorID(Integer id) throws JsonProcessingException {
 		Respuesta respuesta = new Respuesta();
 		try {
 			Usuario usuario = usuarioRepositorio.findById(id)

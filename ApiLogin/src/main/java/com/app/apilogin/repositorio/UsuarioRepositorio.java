@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.app.apilogin.modelo.Usuario;
 
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
 
 	@Query(value = "SELECT * FROM Usuarios p WHERE p.email LIKE %:email% AND p.password LIKE %:pass%", nativeQuery = true)
 	Usuario validarDatos(@Param(value = "email") String email, @Param(value = "pass") String pass);

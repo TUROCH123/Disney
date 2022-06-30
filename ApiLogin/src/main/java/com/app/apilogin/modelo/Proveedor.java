@@ -12,7 +12,8 @@ import javax.persistence.Table;
 public class Proveedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "proveedores_id")
+	private Integer id;
 
 	@Column(name = "proveedor", nullable = false, length = 60)
 	private String proveedor;
@@ -21,17 +22,17 @@ public class Proveedor {
 		super();
 	}
 
-	public Proveedor(Long id, String proveedor) {
+	public Proveedor(Integer id, String proveedor) {
 		super();
 		this.id = id;
 		this.proveedor = proveedor;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

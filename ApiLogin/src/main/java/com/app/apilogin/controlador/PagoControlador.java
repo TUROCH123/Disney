@@ -25,7 +25,7 @@ public class PagoControlador {
 	private PagoService service;
 	
 	@PutMapping("/realizarPago")
-	public ResponseEntity<?> realizarPago(@RequestParam(value = "id",required = true) Long id,@RequestBody Pago pago) throws JsonProcessingException {
+	public ResponseEntity<?> realizarPago(@RequestParam(value = "id",required = true) Integer id,@RequestBody Pago pago) throws JsonProcessingException {
         return service.realizarPago(pago,id);
 	}
 	

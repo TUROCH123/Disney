@@ -12,7 +12,8 @@ import javax.persistence.Table;
 public class MiLista {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "miListas_id")
+	private Integer id;
 
 	@Column(name = "nombre", nullable = false, length = 120)
 	private String nombre;
@@ -29,7 +30,7 @@ public class MiLista {
 		super();
 	}
 
-	public MiLista(Long id, String nombre, String descripcion, String imagen) {
+	public MiLista(Integer id, String nombre, String descripcion, String imagen) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -61,11 +62,11 @@ public class MiLista {
 		this.descripcion = descripcion;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

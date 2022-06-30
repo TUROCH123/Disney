@@ -12,6 +12,7 @@ public class Constantes {
 	public static final String MENSAJE2 = "message {}{}";
 	public static final String TEXTO_VACIO = "";
 	public static final String TIMEOUT = "Timeout";
+	public static final String MENSAJE3 = "message {}{}{}";
 	
 	public Constantes() {
 		// Do nothing because of X and Y.
