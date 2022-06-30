@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -39,7 +39,7 @@ public class Capitulo {
 	private String dirigidoPor;
 
 	@NotEmpty
-	@ManyToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "capitulos_elencos", joinColumns = @JoinColumn(name = "capitulos_id"), inverseJoinColumns = @JoinColumn(name = "elencos_id"))
 	private List<Elenco> elenco;
 

@@ -1,10 +1,13 @@
 package com.app.apilogin.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,18 +27,29 @@ public class MiLista {
 	@Column(name = "imagen", nullable = false, length = 200)
 	private String imagen;
 	
-	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "contenidos_id")
+	private Contenido contenido;
 	
 	public MiLista() {
 		super();
 	}
 
-	public MiLista(Integer id, String nombre, String descripcion, String imagen) {
+	public MiLista(Integer id, String nombre, String descripcion, String imagen, Contenido contenido) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
+		this.contenido = contenido;
+	}
+
+	public Contenido getContenido() {
+		return contenido;
+	}
+
+	public void setContenido(Contenido contenido) {
+		this.contenido = contenido;
 	}
 
 	public String getImagen() {
