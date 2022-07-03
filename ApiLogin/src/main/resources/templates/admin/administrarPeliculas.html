@@ -61,7 +61,6 @@ form .invalid-feedback {
 								</span>
 							</div>
 						</td>
-<!-- 						<td th:text="*{#temporals.format(fechaEstreno,'dd/MM/yyyy')}"></td> -->
 						<td th:text="*{#temporals.format(fechaEstreno,'yyyy')}"></td>
 						<td class="text-end"><a
 							th:href="@{/admin/peliculas/{id}/editar(id=*{id})}">Editar</a> <a
@@ -77,9 +76,9 @@ form .invalid-feedback {
 				<div class="col-sm-6">
 					<div sd:pagination-sumary></div>
 					<div class="col-sm-6">
-<!-- 						<nav> -->
-<!-- 							<ul class="pagination" sd:pagination="full"></ul> -->
-<!-- 						</nav> -->
+						<nav>
+							<ul class="pagination" sd:pagination="full"></ul>
+						</nav>
 					</div>
 				</div>
 			</div>

@@ -29,51 +29,16 @@ import com.app.apilogin.util.Constantes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
-@RequestMapping("/api/v1/perfil")
+@RequestMapping("/api/v1/ajustes")
 @CrossOrigin(origins = "http://localhost:8080")
-public class PerfilControlador {
-	private static final Logger logger = LoggerFactory.getLogger(PerfilControlador.class);
+public class AjustesControlador {
+	private static final Logger logger = LoggerFactory.getLogger(AjustesControlador.class);
 	@Autowired
 	private PerfilesRepositorio perfilesRepositorio;
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
     
-	@GetMapping("/listarPerfiles")
-	public List<Perfiles> listarPerfiles() {
-		return perfilesRepositorio.findAll();
-	}
 
-	@PostMapping("/guardarPerfil")
-	public ResponseEntity<?> guardarPerfil(@RequestBody Perfiles perfil) throws JsonProcessingException {
-        try {
-        	String usr = Constantes.printPrettyJSONString(perfil);
-    		logger.info(Constantes.MENSAJE2,"[guardarPerfil] ", usr);
-    		boolean activo = perfilesRepositorio.findById(perfil.getId()).isPresent();
-    		logger.info(Constantes.MENSAJE2,"[guardarPerfil][activo] ", activo);
-    		if (!activo) {
-                return ResponseEntity.status(HttpStatus.OK).body(perfilesRepositorio.save(perfil));
-			}else {
-				Respuesta respuesta = new Respuesta();
-				respuesta.setCodigo("1");
-				respuesta.setMensaje("Error. El perfil ya existe.");
-				String obj = Constantes.printPrettyJSONString(respuesta);
-				logger.info(Constantes.MENSAJE2,"[guardarEmpleado] ", obj);
-				return ResponseEntity.status(HttpStatus.OK).body(respuesta);
-			}
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
-        }
-	}
-
-	@GetMapping("/obtenerPerfilPorID")
-	public ResponseEntity<Perfiles> obtenerPerfilPorID(@RequestParam(value = "id",required = true) Integer id) throws JsonProcessingException {
-		
-		Perfiles usuario = perfilesRepositorio.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("No existe el perfil"));
-		String obj = Constantes.printPrettyJSONString(usuario);
-		logger.info(Constantes.MENSAJE2, "[obtenerPerfilPorID] ", obj);
-		return ResponseEntity.ok(usuario);
-	}
 	
 	@PutMapping("/editarPerfilPorID")
 	public ResponseEntity<Perfiles> actualizarPerfilPorID(@RequestParam(value = "id",required = true) Integer id,@RequestBody Perfiles perfilAct) throws JsonProcessingException {
@@ -107,16 +72,6 @@ public class PerfilControlador {
 		}
 		return ResponseEntity.ok(perfilActualizado);
 	}
-	//este metodo sirve para eliminar un empleado
-		@DeleteMapping("/eliminarPerfil/{id}")
-		public ResponseEntity<Map<String,Boolean>> eliminarPerfil(@PathVariable Integer id){
-			Perfiles empleado = perfilesRepositorio.findById(id)
-					            .orElseThrow(() -> new ResourceNotFoundException("No existe el perfil con el ID : " + id));
-			
-			perfilesRepositorio.delete(empleado);
-			Map<String, Boolean> respuesta = new HashMap<>();
-			respuesta.put("eliminar",Boolean.TRUE);
-			return ResponseEntity.ok(respuesta);
-	    }
-		
+
+
 }
