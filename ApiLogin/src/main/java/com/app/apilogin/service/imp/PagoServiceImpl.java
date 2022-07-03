@@ -30,21 +30,22 @@ public class PagoServiceImpl implements PagoService {
 	private UsuarioWs usuarioWs;
 	
 	@Override
-	public ResponseEntity<?> realizarPago(Pago pago,Integer id) throws JsonProcessingException {
+	public ResponseEntity<?> realizarPago(Pago pago) throws JsonProcessingException {
+//	public ResponseEntity<?> realizarPago(Pago pago,Integer id) throws JsonProcessingException {
 		Respuesta respuesta = new Respuesta();
 		boolean existeMedioPago = false;
 		boolean activo = false;
 		String msj ="[ACTIVIDAD][realizarPago]";
 		try {
 			logger.info(Constantes.MENSAJE2,msj, "[obtenerUsuarioPorId][INICIO]");
-			Usuario usuario = usuarioWs.obtenerUsuarioPorId(id);
+			Usuario usuario = usuarioWs.obtenerUsuarioPorId(pago.getUserId());
 			String usr = Constantes.printPrettyJSONString(usuario);
 			logger.info(Constantes.MENSAJE3, msj,"[obtenerUsuarioPorId]", usr);
 			logger.info(Constantes.MENSAJE2,msj,"[obtenerUsuarioPorId][FIN]");
 			if (usr.contains("\"id\" : null")) {
 				throw new IDFException("1", "El usuario no existe");
 			}else {
-				existeMedioPago = existeMedioPago(existeMedioPago,usuario,pago,id,msj);
+				existeMedioPago = existeMedioPago(existeMedioPago,usuario,pago,pago.getUserId(),msj);
 			}
 			
 			activo = existePago(pago,existeMedioPago,activo);

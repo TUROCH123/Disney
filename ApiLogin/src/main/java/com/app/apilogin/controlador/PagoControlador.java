@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +25,12 @@ public class PagoControlador {
 	@Autowired
 	private PagoService service;
 	
-	@PutMapping("/realizarPago")
-	public ResponseEntity<?> realizarPago(@RequestParam(value = "id",required = true) Integer id,@RequestBody Pago pago) throws JsonProcessingException {
-        return service.realizarPago(pago,id);
+//	@PutMapping("/realizarPago")
+	@PostMapping("/realizarPago")
+	public ResponseEntity<?> realizarPago(@RequestBody Pago pago) throws JsonProcessingException {
+//	public ResponseEntity<?> realizarPago(@RequestParam(value = "id",required = true) Integer id,@RequestBody Pago pago) throws JsonProcessingException {
+//        return service.realizarPago(pago,id);
+        return service.realizarPago(pago);
 	}
 	
 }

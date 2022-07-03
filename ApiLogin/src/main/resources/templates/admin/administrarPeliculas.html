@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- <html> -->
+<html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<!-- <head> -->
+<head th:replace="admin/index :: head">
+<meta charset="UTF-8">
+<title>Administrar Películas</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+	rel="stylesheet" />
+<style>
+form .invalid-feedback {
+	display: block;
+}
+</style>
+</head>
+<body>
+	<header th:replace="admin/index :: header" class="header"></header>
+	<div class="container-general">
+		<div layout:fragment="content">
+			<h2>Peliculas</h2>
+			<div class="text-end">
+				<a href="/admin/peliculas/nuevo" class="btn btn-primary mb-3">
+					Agregar película </a>
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Pelicula</th>
+						<th>F.Estreno</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pelicula : ${peliculas}" th:object="${pelicula}">
+<!-- 						<td style="width: 150px;"> -->
+						<td style="width: 50px;">
+						<a th:href="@{/assets/{filename}(filename=*{rutaPortada})}"
+							data-fancybox>
+							<img th:src="@{/assets/{filename}(filename=*{rutaPortada})}" alt=""
+								class="img-thumbnail w-100">
+						</a>
+						</td>
+						<td>
+							<div th:text="*{nombre}" class="fs-5 fw-bold"></div>
+							<p th:text="*{descripcionGeneral}"></p>
+							<div>
+								<span class="badge rounded-pill bg-light text-dark me-1"
+									th:each="genero : *{generos}" th:text="${genero.tipo}">
+								</span>
+							</div>
+						</td>
+<!-- 						<td th:text="*{#temporals.format(fechaEstreno,'dd/MM/yyyy')}"></td> -->
+						<td th:text="*{#temporals.format(fechaEstreno,'yyyy')}"></td>
+						<td class="text-end"><a
+							th:href="@{/admin/peliculas/{id}/editar(id=*{id})}">Editar</a> <a
+							href="javascript:void(0)" class="text-danger ms-3"
+							th:onclick="'eliminarPelicula(' + *{id} +')'">Eliminar</a>
+							<form th:id="'eliminarPeliculaForm' + *{id}"
+								th:action="@{/admin/peliculas/{id}/eliminar(id=*{id})}"
+								method="post" class="d-none"></form></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row mt-5" th:with="page=${peliculas}">
+				<div class="col-sm-6">
+					<div sd:pagination-sumary></div>
+					<div class="col-sm-6">
+<!-- 						<nav> -->
+<!-- 							<ul class="pagination" sd:pagination="full"></ul> -->
+<!-- 						</nav> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="admin/index :: footer" class="footer"></footer>
+	<div layout:fragment="scripts">
+		<script>
+			function eliminarPelicula(id) {
+				if (!confirm('¿Estás seguro de eliminar esta película?')) {
+					return;
+				}
+				$('#eliminarPeliculaForm' + id).submit();
+			}
+		</script>
+	</div>
+</body>
+<!-- Scripts Slider JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/scroll.js"></script>
+<script src="../js/slider.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<div layout:fragment="scripts" th:remove="tag"></div>
+</html>

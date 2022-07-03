@@ -11,8 +11,8 @@ public class ApiLoginApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiLoginApplication.class, args);
 	}
-//    @Bean
-//    public SpringDataDialect springDataDialect() {
-//        return new SpringDataDialect();
-//    }
+	@Bean
+	public SpringDataDialect springDataDialect() {
+		return new SpringDataDialect();
+	}
 }

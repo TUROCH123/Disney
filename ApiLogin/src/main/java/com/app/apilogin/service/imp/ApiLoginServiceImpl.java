@@ -51,11 +51,13 @@ public class ApiLoginServiceImpl implements ApiLoginService {
 		} catch (IDFException idf) {
 			respuesta.setCodigo(idf.getCode());
 			respuesta.setMensaje(idf.getMessage());
-			return ResponseEntity.status(HttpStatus.OK).body(respuesta);
+//			return ResponseEntity.status(HttpStatus.OK).body(respuesta);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(respuesta);
 		} catch (Exception e) {
 			respuesta.setCodigo("-3");
 			respuesta.setMensaje(e.getMessage());
-			return ResponseEntity.status(HttpStatus.OK).body(respuesta);
+//			return ResponseEntity.status(HttpStatus.OK).body(respuesta);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(respuesta);
 		}
 	}
 
@@ -159,6 +161,40 @@ public class ApiLoginServiceImpl implements ApiLoginService {
 			logger.info(Constantes.MENSAJE2, "[guardarUsuario] ", obj);
 			return ResponseEntity.status(HttpStatus.OK).body(respuesta);
 		}
+	}
+
+	@Override
+	public Usuario findByEmail(String email) throws JsonProcessingException {
+		Usuario usuario = new Usuario();
+		Respuesta respuesta = new Respuesta();
+		try {
+			if (email.isEmpty()) {
+				throw new IDFException("1", "Los campos ingresados son nulos o vacios");
+			} else {
+
+				logger.info(Constantes.MENSAJE2, "[validarDatos][user] ", email);
+
+				usuario = usuarioRepositorio.findByEmail(email);
+
+				if (usuario != null) {
+					respuesta.setCodigo("0");
+					respuesta.setMensaje("Proceso Exitoso");
+					String obj = Constantes.printPrettyJSONString(respuesta);
+					logger.info(Constantes.MENSAJE2, "[guardarUsuario] ", obj);
+				} else {
+					throw new IDFException("1", "Los campos ingresados no son los correctos");
+				}
+			}
+		} catch (IDFException idf) {
+			respuesta.setCodigo(idf.getCode());
+			respuesta.setMensaje(idf.getMessage());
+//			return ResponseEntity.status(HttpStatus.OK).body(respuesta);
+		} catch (Exception e) {
+			respuesta.setCodigo("-3");
+			respuesta.setMensaje(e.getMessage());
+//			return ResponseEntity.status(HttpStatus.OK).body(respuesta);
+		}
+		return usuario;
 	}
 
 }

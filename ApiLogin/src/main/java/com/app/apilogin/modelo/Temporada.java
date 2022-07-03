@@ -28,9 +28,9 @@ public class Temporada {
 	@Column(name = "nombre", nullable = false, length = 20)
 	private String nombre;
 
-	@NotBlank
-	@Column(name = "fechaEstreno", nullable = false, length = 120)
-	private String fechaEstreno;
+//	@NotBlank
+//	@Column(name = "fechaEstreno", nullable = false, length = 120)
+//	private String fechaEstreno;
 
 	@NotEmpty
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -43,12 +43,12 @@ public class Temporada {
 		super();
 	}
 
-	public Temporada(Integer id, @NotBlank String nombre, @NotBlank String fechaEstreno,
+	public Temporada(Integer id, @NotBlank String nombre,
 			@NotEmpty List<Capitulo> capitulos) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.fechaEstreno = fechaEstreno;
+//		this.fechaEstreno = fechaEstreno;
 		this.capitulos = capitulos;
 	}
 
@@ -68,13 +68,13 @@ public class Temporada {
 		this.nombre = nombre;
 	}
 
-	public String getFechaEstreno() {
-		return fechaEstreno;
-	}
+//	public String getFechaEstreno() {
+//		return fechaEstreno;
+//	}
 
-	public void setFechaEstreno(String fechaEstreno) {
-		this.fechaEstreno = fechaEstreno;
-	}
+//	public void setFechaEstreno(String fechaEstreno) {
+//		this.fechaEstreno = fechaEstreno;
+//	}
 
 	public List<Capitulo> getCapitulos() {
 		return capitulos;

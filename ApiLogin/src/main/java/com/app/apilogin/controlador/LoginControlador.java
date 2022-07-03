@@ -70,11 +70,17 @@ public class LoginControlador {
 	 }
 
 	@GetMapping("/validarDatos")
-	public ResponseEntity<?> validarDatos(@RequestParam(value = "email",required = true) String email, @RequestParam(value = "pass",required = true) String pass) throws JsonProcessingException {
+	public ResponseEntity<?> validarDatos(@RequestParam(value = "email",required = false) String email, @RequestParam(value = "pass",required = false) String pass) throws JsonProcessingException {
 		logger.info(Constantes.MENSAJE2,"[validarDatos][user] ", email);
 		logger.info(Constantes.MENSAJE2,"[validarDatos][pass] ", pass);
 		return service.validarDatos(email, pass);
 	}
 
+	@GetMapping("/findByEmail")
+	public Usuario findByEmail(@RequestParam(value = "email",required = true) String email) throws JsonProcessingException {
+		logger.info(Constantes.MENSAJE2,"[validarDatos][user] ", email);
+
+		return service.findByEmail(email);
+	}
 
 }

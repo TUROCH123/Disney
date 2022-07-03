@@ -1,0 +1,384 @@
+.fNPeSb {
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+section {
+    display: block;
+}
+
+#app_body_content {
+    -webkit-font-smoothing: antialiased;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background: #000;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.15;
+}
+
+.text-color--primary {
+    color: #f9f9f9;
+}
+
+.padding--bottom-6 {
+    padding-bottom: 1.5rem;
+}
+
+.typeramp-avenir-world-for-disney .h2, .typeramp-avenir-world-for-disney h2 {
+    font-family: Avenir-World-for-Disney-Demi,sans-serif;
+    font-size: 32px;
+    letter-spacing: .11px;
+    line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+
+/* * { */
+/*     box-sizing: border-box; */
+/* } */
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+@media (min-width: 480px)
+<style>
+.buDove {
+    max-width: 528px;
+}
+
+.buDove {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    list-style: none;
+    margin: 42px auto;
+    padding: 0px;
+    width: 100%;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.buDove .profile-avatar-enter-done {
+    transform: translateY(0px);
+    transition: all 300ms ease-out 0s;
+}
+
+div {
+    display: block;
+}
+
+.gijFrw::after {
+    border-radius: 50%;
+    border: 4px solid rgba(0, 0, 0, 0);
+    inset: 0px;
+    content: "";
+    position: absolute;
+    transition: border 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+}
+
+.typeramp-avenir-world-for-disney .h3, .typeramp-avenir-world-for-disney h3 {
+    font-family: Avenir-World-for-Disney-Demi,sans-serif;
+    font-size: 24px;
+    letter-spacing: .11px;
+    line-height: 1.2;
+}
+
+
+.margin--top-6 {
+    margin-top: 1.5rem;
+}
+
+.up-next-overlay__header, h1, h2, h3, h4 {
+    font-family: Avenir-Heavy,Arial,Helvetica,sans-serif;
+}
+
+.text--center {
+    text-align: center;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+`style` attribute {
+    text-align: center;
+}
+
+@media (min-width: 480px)
+<style>
+.cWvpBt {
+    margin: 18px;
+}
+
+.cWvpBt {
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 15px;
+    overflow: visible;
+    position: relative;
+    flex-flow: column wrap;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+@media (min-width: 768px)
+<style>
+.fHayqP {
+    height: 140px;
+    width: 140px;
+}
+
+.fHayqP {
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgba(249, 249, 249, 0.1);
+    border: none;
+    border-radius: 120px;
+    display: flex;
+    height: 120px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    transition: all 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+    width: 120px;
+}
+
+.fHayqP::after {
+    border-radius: 50%;
+    border: 4px solid rgba(0, 0, 0, 0);
+    inset: 0px;
+    content: "";
+    position: absolute;
+    transition: border 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+    pointer-events: none;
+}
+
+label {
+    cursor: default;
+}
+
+.kOMoAG {
+    height: 48px;
+    min-width: 48px;
+    width: 48px;
+    z-index: auto;
+}
+.kOMoAG path {
+    fill: rgb(249, 249, 249);
+}
+
+svg[Attributes Style] {
+    color: white;
+    transform: none;
+}
+.kaMwXS {
+    transition: all 0.3s ease 0s;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+path[Attributes Style] {
+    d: path("M 16.469 17.219 V 5.5 a 1 1 0 0 1 1 -1 h 0.312 a 1 1 0 0 1 1 1 v 11.719 H 30.5 a 1 1 0 0 1 1 1 v 0.312 a 1 1 0 0 1 -1 1 H 18.781 V 31.25 a 1 1 0 0 1 -1 1 h -0.312 a 1 1 0 0 1 -1 -1 V 19.531 H 4.75 a 1 1 0 0 1 -1 -1 v -0.312 a 1 1 0 0 1 1 -1 h 11.719 Z");
+}
+.text-color--secondary {
+    color: #cacaca;
+}
+
+:not(svg) {
+    transform-origin: 0px 0px;
+}
+
+@media (min-width: 768px)
+<style>
+.ftNTyN {
+    height: 140px;
+    width: 140px;
+}
+.ftNTyN {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    height: 120px;
+    width: 120px;
+    background: url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/25A6843153CA0253CB27406678606CE7F740023D1242F42B3BC48B38C903D0E2/scale?width=280&aspectRatio=1.00&format=png) 0% 0% / contain no-repeat;
+    border-radius: 50%;
+    margin: auto;
+    transition: all 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+}
+.ftNTyN::after {
+    border-radius: 50%;
+    border: 4px solid rgba(0, 0, 0, 0);
+    inset: 0px;
+    content: "";
+    position: absolute;
+    transition: border 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+}
+
+.padding--top-6 {
+    padding-top: 1.5rem;
+}
+
+.h3, h3 {
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+/* .jFLbLg { */
+/*     display: block; */
+/*     cursor: pointer; */
+/*     position: relative; */
+/*     height: 120px; */
+/*     width: 120px; */
+/*     background: url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/7A97549C552B55E0AD60FE0ECD2B012DB369F6B935F06EDDC30392DA0EC08076/scale?width=280&aspectRatio=1.00&format=png) 0% 0% / contain no-repeat; */
+/*     border-radius: 50%; */
+/*     margin: auto; */
+/*     transition: all 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s; */
+/* } */
+
+.button.button--secondary {
+    background: #40424a;
+}
+
+.button.button--destructive, .button.button--outline, .button.button--primary, .button.button--secondary, .button.button--transparent, .button.button-play, .button.button-play.button-play--secondary, .theme--kids-mode .button.button-play.button-play--secondary {
+    border: 0;
+    border-radius: .25rem;
+    color: #f9f9f9;
+}
+
+.dhKEIN {
+    padding: 0px 24px;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 0;
+    height: 48px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 0px;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.2s ease-in-out 0s;
+    width: auto;
+    -webkit-font-smoothing: antialiased;
+    opacity: 1;
+    visibility: visible;
+}
+
+.button {
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    line-height: 1.6;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+button {
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
+.badge.badge--large, .button {
+    font-family: Avenir-World-for-Disney-Demi,sans-serif;
+}
+
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input {
+    overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}

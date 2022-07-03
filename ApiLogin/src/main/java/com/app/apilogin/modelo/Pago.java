@@ -38,18 +38,34 @@ public class Pago {
 	@JoinColumn(name = "planes_id")
 	private Planes planes;
 
+	@JoinColumn(name = "userId")
+	private Integer userId;
+
 	public Pago() {
 		super();
 	}
 
-	public Pago(Integer id, Double monto, Date fechaPago, MedioPago medioPago, Planes planes) {
+
+	public Pago(Integer id, Double monto, Date fechaPago, MedioPago medioPago, Planes planes, Integer userId) {
 		super();
 		this.id = id;
 		this.monto = monto;
 		this.fechaPago = fechaPago;
 		this.medioPago = medioPago;
 		this.planes = planes;
+		this.userId = userId;
 	}
+
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 
 	public Integer getId() {
 		return id;

@@ -72,4 +72,24 @@ public class UsuarioWsImp  implements UsuarioWs {
 	    }
 		return response;
 	}
+	@Override
+	public Usuario validarDatos(String email,String pass) throws WSException {
+		Usuario response = null;
+		String url = "http://localhost:8080/api/v1/login/validarDatos/?email="+email+"&pass="+pass+"";
+		String nombreComponente = "login";
+		String nombreMetodo = "validarDatos";
+		try {
+
+			response = restTemplateUsuario.getForObject(url, Usuario.class);
+			
+	    } catch (JaxWsSoapFaultException e) {
+	        throw new WSException("-3", String.format("Error inesperado. Error: %s - %s", nombreComponente, nombreMetodo), e);
+	    } catch (Exception e) {
+	        capturarErrorWs(e, nombreComponente, nombreMetodo, "-1", "-2", "Error de timeout en %s - %s",
+	            "Error de disponibilidad en %s - %s");
+	    } finally {
+
+	    }
+		return response;
+	}
 }

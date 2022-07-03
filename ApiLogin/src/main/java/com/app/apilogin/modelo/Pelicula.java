@@ -28,9 +28,9 @@ public class Pelicula {
 	@Column(name = "duracion", nullable = false, length = 20)
 	private String duracion;
 
-	@NotBlank
-	@Column(name = "fechaEstreno", nullable = false, length = 120)
-	private String fechaEstreno;
+//	@NotBlank
+//	@Column(name = "fechaEstreno", nullable = false, length = 120)
+//	private String fechaEstreno;
 
 	@NotBlank
 	@Column(name = "descripcion", nullable = false, length = 400)
@@ -48,12 +48,12 @@ public class Pelicula {
 		super();
 	}
 
-	public Pelicula(Integer id, @NotBlank String duracion, @NotBlank String fechaEstreno, @NotBlank String descripcion,
+	public Pelicula(Integer id, @NotBlank String duracion, @NotBlank String descripcion,
 			@NotBlank String dirigidoPor, @NotEmpty List<Elenco> elenco) {
 		super();
 		this.id = id;
 		this.duracion = duracion;
-		this.fechaEstreno = fechaEstreno;
+//		this.fechaEstreno = fechaEstreno;
 		this.descripcion = descripcion;
 		this.dirigidoPor = dirigidoPor;
 		this.elenco = elenco;
@@ -75,13 +75,13 @@ public class Pelicula {
 		this.duracion = duracion;
 	}
 
-	public String getFechaEstreno() {
-		return fechaEstreno;
-	}
+//	public String getFechaEstreno() {
+//		return fechaEstreno;
+//	}
 
-	public void setFechaEstreno(String fechaEstreno) {
-		this.fechaEstreno = fechaEstreno;
-	}
+//	public void setFechaEstreno(String fechaEstreno) {
+//		this.fechaEstreno = fechaEstreno;
+//	}
 
 	public String getDescripcion() {
 		return descripcion;

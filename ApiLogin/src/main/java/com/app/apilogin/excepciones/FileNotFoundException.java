@@ -3,13 +3,17 @@ package com.app.apilogin.excepciones;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
+@ResponseStatus(code = HttpStatus.NOT_FOUND)
 public class FileNotFoundException extends RuntimeException {
-    public FileNotFoundException(String message) {
-        super(message);
+
+	private static final long serialVersionUID = 1L;
+
+	public FileNotFoundException(String mensaje) {
+		super(mensaje);
     }
 
-    public FileNotFoundException(String message, Throwable exception) {
-        super(message, exception);
+	public FileNotFoundException(String mensaje, Throwable excepcion) {
+		super(mensaje, excepcion);
     }
+
 }

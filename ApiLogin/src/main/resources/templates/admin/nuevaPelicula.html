@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<!-- <html> -->
 <html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:th="http://www.thymeleaf.org">
-<!-- <html> -->
+<!-- <head> -->
 <head th:replace="admin/index :: head">
 <meta charset="UTF-8">
-<title>Registrar Peliculas</title>
+<title>Agregar Películas</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -24,10 +25,10 @@ form .invalid-feedback {
 </style>
 </head>
 <body>
- 	<header th:replace="admin/index :: header" class="header"></header>
+	<header th:replace="admin/index :: header" class="header"></header>
 	<div class="container-general">
-	<div layout:fragment="content">
-			<h1 class="list-title">Películas</h1>
+		<div layout:fragment="content">
+<h1 class="list-title">Registrar Películas</h1>
 		<div layout:fragment="form">
 			<br>
 			<form action="" method="post" th:object="${pelicula}"
@@ -47,7 +48,7 @@ form .invalid-feedback {
 					<div class="invalid-feedback"
 						th:if="${#fields.hasErrors('descripcionGeneral')}"
 						th:errors="*{descripcionGeneral}"></div>
-                </div>
+				</div>
 				<div class="form-group">
 					<label for="pgeneral" class="form-label">Publico General : </label> <input
 						type="text" id="pgeneral" placeholder="Digite el Publico en General"
@@ -57,12 +58,13 @@ form .invalid-feedback {
 				</div>
 				<div class="mb-3">
 					<label for="fechaEstreno" class="form-label">Fecha de
-						estreno : </label> <input type="date" id="fechaEstreno"
-						placeholder="Digite la fecha de estreno" class="form-control"
-						name="fechaEstreno">
-					<!-- 				<input type="date" id="fechaEstreno" placeholder="Digite la fecha de estreno" class="form-control" th:field="*{fechaEstreno}"> -->
-					<!-- 				<div class="invalid-feedback" th:if="${#fields.hasErrors('fechaEstreno')}" th:errors="*{fechaEstreno}"></div> -->
-		</div>
+						estreno : </label> 
+<!-- 						<input type="date" id="fechaEstreno" -->
+<!-- 						placeholder="Digite la fecha de estreno" class="form-control" -->
+<!-- 						name="fechaEstreno"> -->
+									<input type="date" id="fechaEstreno" placeholder="Digite la fecha de estreno" class="form-control" th:field="*{fechaEstreno}">
+									<div class="invalid-feedback" th:if="${#fields.hasErrors('fechaEstreno')}" th:errors="*{fechaEstreno}"></div>
+				</div>
 				<div class="mb-3">
 					<label for="youtubeTrailerId" class="form-label">Contenido Trailer ID : </label>
 					<input type="text" id="youtubeTrailerId"
@@ -76,7 +78,7 @@ form .invalid-feedback {
 					<input type="file" name="portada" id="portad" class="form-control">
 					<!-- 				<input type="file" name="portada" id="portad" class="form-control" th:field="*{portada}"> -->
 					<!-- 				<div class="invalid-feedback" th:if="${#fields.hasErrors('portada')}" th:errors="*{portada}"></div> -->
-	</div>
+				</div>
 				<div class="mb-3">
 					<label for="generos" class="form-label">Genero : </label>
 					<!-- 				<select id="generos" class="form-control" th:field="*{generos}" multiple> -->
@@ -85,18 +87,18 @@ form .invalid-feedback {
 							th:text="${genero.tipo}"></option>
 					</select>
 					<!-- 				<div class="invalid-feedback" th:if="${#fields.hasErrors('generos')}" th:errors="*{generos}"></div> -->
-	</div>
-	
+				</div>
+
 				<div class="text-end">
 					<button type="submit" class="btn btn-primary">Guardar</button>
 				</div>
 			</form>
 		</div>
-		</div>
 	</div>
+
 	<footer th:replace="admin/index :: footer" class="footer"></footer>
 </body>
-
+<!-- Scripts Slider JS -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script

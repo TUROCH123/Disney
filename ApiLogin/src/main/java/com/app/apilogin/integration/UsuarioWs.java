@@ -8,4 +8,5 @@ import com.app.apilogin.modelo.Usuario;
 public interface UsuarioWs {
 	public Usuario obtenerUsuarioPorId(Integer id) throws WSException;
 	public ResponseEntity<?> actualizarUsuarioPorID(Integer id,Usuario usuario) throws WSException;
+	public Usuario validarDatos(String email, String pass) throws WSException;
 }

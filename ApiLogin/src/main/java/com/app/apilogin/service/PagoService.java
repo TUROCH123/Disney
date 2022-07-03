@@ -9,5 +9,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public interface PagoService {
 
 //	public ResponseEntity<?> obtenerPagoPorID(@PathVariable Long id) throws JsonProcessingException;
-	public ResponseEntity<?> realizarPago(Pago pago, Integer id)throws JsonProcessingException;
+//	public ResponseEntity<?> realizarPago(Pago pago, Integer id)throws JsonProcessingException;
+	public ResponseEntity<?> realizarPago(Pago pago)throws JsonProcessingException;
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="index :: head">
+<meta charset="UTF-8">
+<title>LOGIN</title>
+</head>
+<body>
+	<header th:replace="index :: header" class="header"></header>
+
+		<div class="container-general">
+			<!-- Films -->
+			<div class="main movies-rows">
+
+				<h1 class="list-title">INICIO DE SESIÓN</h1>
+				<form th:action="@{/admin/iniciarSesion}" method="post">
+<!-- 					<div th:if=${param.error}> -->
+<!-- 						<div class="alert alert-danger">Usuario o contraseña -->
+<!-- 							inválidos</div> -->
+<!-- 					</div> -->
+
+<!-- 					<div th:if=${param.logout}> -->
+<!-- 						<div class="alert alert-info">Ha cerrado sesión exitosamente -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+
+
+					<div class="form-group">
+						<label for="email">Nombre de usuario : </label> <input
+							id="email" name="email" type="text" class="form-control"
+							required autofocus="autofocus" placeholder="Digite su email ID">
+					</div>
+
+					<div class="form-group">
+						<label for="pass">Password : </label> <input id="pass"
+							type="password" name="pass" class="form-control" required
+							autofocus="autofocus" placeholder="Digite su password">
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3">
+								<input type="submit" class="form-control btn btn-primary"
+									name="login-submit" id="login-submit" value="Iniciar sesión" />
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="form-group">
+					<span>Si eres nuevo usuario <a th:href="@{/registro}">regístrate
+							aqui</a></span>
+				</div>
+			</div>
+		</div>
+
+	<footer th:replace="index :: footer" class="footer"></footer>
+</body>
+<!-- Scripts Slider JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/scroll.js"></script>
+<script src="../js/slider.js"></script>
+</html>

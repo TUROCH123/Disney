@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Disney Plus</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CDN Slick Slider -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+
+<!-- Styles CSS -->
+<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/overlay.css">
+<link rel="stylesheet" href="../css/slider.css">
+<link rel="stylesheet" href="../css/disney.css">
+<link rel="stylesheet" href="../css/film.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/New.css">
+<link rel="shortcut icon" href="../img/icons/logo.svg"
+	type="image/x-icon">
+</head>
+<body>
+	<header th:fragment="header" class="header">
+		<a href="#" class="logo"><img src="../img/icons/logo.svg" alt=""></a>
+		<nav class="nav-links">
+		</nav>
+		<!-- Profile -->
+		<div class="profile">
+			<div class="profile-selected">
+			<a href="/editarPerfil"><button aria-label="Modificar perfiles" data-testid="edit-profiles-button" role="button" kind="secondary" class="sc-cvbbAY dhKEIN button button--secondary " id="" type="submit" data-gv2elementkey="editProfileButton" data-gv2interactionkey="editProfileButton" data-gv2-interaction-bound="true">EDITAR PERFILES</button>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<div class="container-general">
+		<section data-testid="profiles-wrapper" width="" class="sc-cpmKsF fNPeSb">
+			<h2 class="padding--bottom-6 text-color--primary">¿Quién eres?</h2>
+			<ul class="sc-dWcDbm buDove">
+				<div class="profile-avatar-appear-done profile-avatar-enter-done" style="text-align: center;">
+					<div aria-label="Inicia sesión en el perfil de TupapiPco." data-testid="profile-avatar-5" role="button" tabindex="0" data-gv2elementkey="profileId" data-gv2elementvalue="2d63fb10-6e00-47a7-aa35-920fc9951f18" data-gv2interactionkey="profileId" data-index="0" class="sc-iGrrsa sc-hzDEsm kWiBIK" data-gv2-interaction-bound="true">
+						<div class="sc-ipZHIp sc-fOICqy ftNTyN profile-avatar"></div>
+						<a href="/iniciarPerfil" >
+						<h3 class="margin--top-6 text--center text-color--primary">TupapiPco</h3></a>
+					</div>
+				</div>
+				<label aria-label="Crear perfil" role="button" class="sc-hjRWVT sc-fHxwqH cWvpBt form-label profile-avatar-appear-done profile-avatar-enter-done" tabindex="0" data-gv2elementkey="addProfileButton" data-gv2interactionkey="addProfileButton" data-testid="add-profile-cta" data-gv2-interaction-bound="true">
+					<div class="sc-cEvuZC fHayqP add-profile">
+					<svg aria-hidden="true" aria-label="plus" color="white" role="img" transform="" version="1.1" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" class="sc-bRBYWo kOMoAG">
+					<title></title>
+					<path d="M16.469 17.219V5.5a1 1 0 0 1 1-1h.312a1 1 0 0 1 1 1v11.719H30.5a1 1 0 0 1 1 1v.312a1 1 0 0 1-1 1H18.781V31.25a1 1 0 0 1-1 1h-.312a1 1 0 0 1-1-1V19.531H4.75a1 1 0 0 1-1-1v-.312a1 1 0 0 1 1-1h11.719z" class="sc-Rmtcm kaMwXS"></path>
+					</svg>
+					</div>
+					<h3 class="text-color--secondary padding--top-6" style="max-width: 160px;">Crear perfil</h3>
+				</label>
+			</ul>
+		</section>
+	</div>
+
+	<!-- Footer -->
+<footer th:replace="index :: footer" class="footer"></footer>
+</body>
+<!-- Scripts Slider JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/scroll.js"></script>
+<script src="../js/slider.js"></script>
+</html>

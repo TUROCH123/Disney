@@ -268,3 +268,108 @@ a {
 .plus-perfil:hover {
   background: rgb(102, 102, 102);
 }
+/* ------------------------------------------------------------------------------------------------------------- */
+/* Perfile selected */
+.perfile {
+  position: fixed;
+  display: inline-flex;
+  right: 0;
+  margin: 0;
+  height: 0%;
+  transition: height 0.4s ease-in-out;
+  cursor: pointer;
+  z-index: 1;
+}
+.perfile:hover {
+  display: inline-block;
+}
+.avatar {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.perfile-selected {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.perfile-selected .avatar {
+  margin: 20px;
+}
+.perfile:hover p {
+  display: inline;
+}
+.perfile p {
+  color: white;
+}
+.perfile:hover {
+  top: 0;
+  right: 0;
+  width: 200px;
+  border-right: 1px solid rgb(82, 82, 82);
+  border-left: 1px solid rgb(82, 82, 82);
+  border-bottom: 1px solid rgb(82, 82, 82);
+  background: #131313;
+  height: auto;
+  animation-name: viewprofiles;
+  animation-duration: 0.3s;
+}
+@keyframes viewperfiles {
+  0% {
+    top: -50px;
+    opacity: 0%;
+  }
+  50% {
+    opacity: 55%;
+  }
+  100% {
+    top: 0px;
+    opacity: 100%;
+  }
+}
+.perfile:hover .perfile-selected {
+  border-bottom: 1px solid rgb(82, 82, 82);
+}
+/* Profile Nav */
+/* .perfile-nav { */
+/*   display: none; */
+/*   margin-right: 30px; */
+/* } */
+.perfile:hover .perfile-nav {
+  display: block;
+}
+.perfile-nav-perfiles p {
+  color: white;
+  margin-left: 5px;
+  font-size: 14px;
+}
+/* .header li { */
+/*   list-style: none; */
+/* } */
+.perfile-nav-perfiles li {
+  display: flex;
+  align-items: center;
+}
+.perfile-nav-perfiles img {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.perfile-nav-options li {
+  margin: 15px;
+}
+.plus-perfile {
+  margin-top: 15px;
+  margin-left: 15px;
+  padding: 12px;
+  border-radius: 50px;
+  background: rgb(82, 82, 82);
+}
+.plus-perfile svg {
+  display: block;
+  margin: auto;
+  justify-content: center;
+}
+.plus-perfile:hover {
+  background: rgb(102, 102, 102);
+}

@@ -12,4 +12,6 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
 	@Query(value = "SELECT * FROM Usuarios p WHERE p.email LIKE %:email% AND p.password LIKE %:pass%", nativeQuery = true)
 	Usuario validarDatos(@Param(value = "email") String email, @Param(value = "pass") String pass);
 
+	public Usuario findByEmail(String email);
+
 }
