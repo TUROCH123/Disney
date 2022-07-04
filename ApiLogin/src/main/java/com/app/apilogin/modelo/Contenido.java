@@ -71,6 +71,14 @@ public class Contenido {
 	@JoinColumn(name = "series_id")
 	private Serie serie;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "audios_id")
+	private Audio audio;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "subtitulos_id")
+	private Subtitulo subtitulo;
+	
 	@NotBlank
 	private String youtubeTrailerId;
 
@@ -242,6 +250,30 @@ public class Contenido {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+
+
+	public Audio getAudio() {
+		return audio;
+	}
+
+
+
+	public void setAudio(Audio audio) {
+		this.audio = audio;
+	}
+
+
+
+	public Subtitulo getSubtitulo() {
+		return subtitulo;
+	}
+
+
+
+	public void setSubtitulo(Subtitulo subtitulo) {
+		this.subtitulo = subtitulo;
 	}
 
 }

@@ -16,10 +16,10 @@ public class UserController {
 		return "peliculas/peliculas";
 	}
 	
-	@GetMapping("/nuevaPelicula")
-	public String nuevaPelicula() {
-		return "admin/nuevasPeliculas";
-	}
+//	@GetMapping("/nuevaPelicula")
+//	public String nuevaPelicula() {
+//		return "admin/nuevasPeliculas";
+//	}
 	
 	@GetMapping("/login/user")
 	public String iniciarSesion() {
@@ -31,9 +31,9 @@ public class UserController {
 		return "admin/index";
 	}
 	
-	@GetMapping("/administrarPelicula")
-	public String administrarPelicula() {
-		return "admin/administrarPeliculas";
-	}
+//	@GetMapping("/administrarPelicula")
+//	public String administrarPelicula() {
+//		return "admin/administrarPeliculas";
+//	}
 
 }
