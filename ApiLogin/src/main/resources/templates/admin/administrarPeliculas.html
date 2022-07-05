@@ -58,7 +58,8 @@
 								</span>
 							</div>
 						</td>
-						<td th:text="*{#temporals.format(fechaEstreno,'yyyy')}"></td>
+<!-- 						<td th:text="*{#temporals.format(fechaEstreno,'yyyy')}"></td> -->
+						<td th:text="*{fechaEstreno}"></td>
 						<td class="text-end"><a
 							th:href="@{/admin/peliculas/{id}/editar(id=*{id})}">Editar</a> <a
 							href="javascript:void(0)" class="text-danger ms-3"

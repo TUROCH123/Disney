@@ -35,18 +35,17 @@ public class Contenido {
 	private String nombre;
 
 	@NotBlank
-	@Column(name = "descripcionGeneral", nullable = false, length = 120)
+	@Column(name = "descripcionGeneral", nullable = false, length = 300)
 	private String descripcionGeneral;
 
 	@Column(name = "pgeneral", nullable = false, length = 200)
 	private String pgeneral;
 
-//	@NotBlank
-//	@Column(name = "fechaEstreno", nullable = false, length = 120)
-//	private String fechaEstreno;
+//	@NotNull
+//	@DateTimeFormat(iso = ISO.DATE)
+//	private LocalDate fechaEstreno;
 	@NotNull
-	@DateTimeFormat(iso = ISO.DATE)
-	private LocalDate fechaEstreno;
+	private String fechaEstreno;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tipoContenidos_id")
@@ -57,9 +56,7 @@ public class Contenido {
 	private Proveedor proveedores;
 
 	@NotEmpty
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@ManyToMany(fetch= FetchType.LAZY)
-//	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name = "contenidos_generos", joinColumns = @JoinColumn(name = "contenidos_id"), inverseJoinColumns = @JoinColumn(name = "generos_id"))
 	private List<Genero> generos;
 
@@ -91,12 +88,31 @@ public class Contenido {
 		super();
 	}
 
-
+	public Contenido(@NotBlank String nombre, @NotBlank String descripcionGeneral, String pgeneral,
+			@NotNull String fechaEstreno, TipoContenido tipoContenidos, Proveedor proveedores,
+			@NotEmpty List<Genero> generos, Pelicula pelicula, Serie serie, Audio audio, Subtitulo subtitulo,
+			@NotBlank String youtubeTrailerId, String rutaPortada, MultipartFile portada) {
+		super();
+		this.nombre = nombre;
+		this.descripcionGeneral = descripcionGeneral;
+		this.pgeneral = pgeneral;
+		this.fechaEstreno = fechaEstreno;
+		this.tipoContenidos = tipoContenidos;
+		this.proveedores = proveedores;
+		this.generos = generos;
+		this.pelicula = pelicula;
+		this.serie = serie;
+		this.audio = audio;
+		this.subtitulo = subtitulo;
+		this.youtubeTrailerId = youtubeTrailerId;
+		this.rutaPortada = rutaPortada;
+		this.portada = portada;
+	}
 
 	public Contenido(Integer id, @NotBlank String nombre, @NotBlank String descripcionGeneral, String pgeneral,
-			@NotBlank LocalDate fechaEstreno, TipoContenido tipoContenidos, Proveedor proveedores,
-			@NotEmpty List<Genero> generos, Pelicula pelicula, Serie serie, @NotBlank String youtubeTrailerId,
-			String rutaPortada, MultipartFile portada) {
+			@NotNull String fechaEstreno, TipoContenido tipoContenidos, Proveedor proveedores,
+			@NotEmpty List<Genero> generos, Pelicula pelicula, Serie serie, Audio audio, Subtitulo subtitulo,
+			@NotBlank String youtubeTrailerId, String rutaPortada, MultipartFile portada) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -108,45 +124,20 @@ public class Contenido {
 		this.generos = generos;
 		this.pelicula = pelicula;
 		this.serie = serie;
+		this.audio = audio;
+		this.subtitulo = subtitulo;
 		this.youtubeTrailerId = youtubeTrailerId;
 		this.rutaPortada = rutaPortada;
 		this.portada = portada;
 	}
 
-
-
-	public Contenido(@NotBlank String nombre, @NotBlank String descripcionGeneral, String pgeneral,
-			@NotBlank LocalDate fechaEstreno, TipoContenido tipoContenidos, Proveedor proveedores,
-			@NotEmpty List<Genero> generos, Pelicula pelicula, Serie serie, @NotBlank String youtubeTrailerId,
-			String rutaPortada, MultipartFile portada) {
-		super();
-		this.nombre = nombre;
-		this.descripcionGeneral = descripcionGeneral;
-		this.pgeneral = pgeneral;
-		this.fechaEstreno = fechaEstreno;
-		this.tipoContenidos = tipoContenidos;
-		this.proveedores = proveedores;
-		this.generos = generos;
-		this.pelicula = pelicula;
-		this.serie = serie;
-		this.youtubeTrailerId = youtubeTrailerId;
-		this.rutaPortada = rutaPortada;
-		this.portada = portada;
-	}
-
-
-
-	public LocalDate getFechaEstreno() {
+	public String getFechaEstreno() {
 		return fechaEstreno;
 	}
 
-
-
-	public void setFechaEstreno(LocalDate fechaEstreno) {
+	public void setFechaEstreno(String fechaEstreno) {
 		this.fechaEstreno = fechaEstreno;
 	}
-
-
 
 	public Serie getSerie() {
 		return serie;
@@ -252,25 +243,17 @@ public class Contenido {
 		this.id = id;
 	}
 
-
-
 	public Audio getAudio() {
 		return audio;
 	}
-
-
 
 	public void setAudio(Audio audio) {
 		this.audio = audio;
 	}
 
-
-
 	public Subtitulo getSubtitulo() {
 		return subtitulo;
 	}
-
-
 
 	public void setSubtitulo(Subtitulo subtitulo) {
 		this.subtitulo = subtitulo;
